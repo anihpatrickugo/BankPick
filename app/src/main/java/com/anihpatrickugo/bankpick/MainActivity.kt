@@ -60,33 +60,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-//@Composable
-//fun Greeting(name: String, modifier: Modifier = Modifier, themeViewModel: ThemeViewModel = viewModel()) {
-//
-//
-//    val isDarkTheme = themeViewModel.isDarkTheme.collectAsState()
-//
-//    Column (
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .padding(12.dp),
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//        verticalArrangement = Arrangement.Center
-//    ){
-//
-//        Text(
-//            text = "Hello $name!",
-//            modifier = modifier
-//        )
-//
-//        Button(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .height(50.dp),
-//            onClick = { themeViewModel.toggleTheme() }
-//        ) {
-//            Text(text = if (isDarkTheme.value) "Switch to Light" else "Switch to Dark")
-//        }
-//    }
-//
-//}

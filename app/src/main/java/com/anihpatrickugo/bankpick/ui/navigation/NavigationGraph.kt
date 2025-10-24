@@ -9,6 +9,8 @@ import com.anihpatrickugo.bankpick.ui.screens.authentication.splash.SplashScreen
 import com.anihpatrickugo.bankpick.ui.screens.authentication.onboarding.OnboardingScreen
 import androidx.compose.material3.Text
 import com.anihpatrickugo.bankpick.ui.screens.authentication.login.LoginScreen
+import com.anihpatrickugo.bankpick.ui.screens.authentication.signup.SignupScreen
+import com.anihpatrickugo.bankpick.ui.screens.main.BottomTabScreen
 
 
 @Composable
@@ -41,5 +43,16 @@ fun NavigationGraph() {
         composable(NavRoutes.Login.route) {
            LoginScreen(navController = navController)
         }
+
+        // Signuo Screen
+        composable(NavRoutes.Signup.route) {
+            SignupScreen(navController = navController)
+        }
+
+        //bottom tabs
+        composable(NavRoutes.Main.route) {
+            BottomTabScreen()
+        }
+
     }
 }

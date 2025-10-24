@@ -74,6 +74,7 @@ dependencies {
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.32.0") // system contrloller
     implementation("androidx.compose.foundation:foundation:1.7.0")
     implementation("androidx.navigation:navigation-compose:2.8.3") // navigation
+    implementation("io.coil-kt:coil-compose:2.6.0")  // for network images
 
 
 

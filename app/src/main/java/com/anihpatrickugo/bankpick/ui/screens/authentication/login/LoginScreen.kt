@@ -1,22 +1,27 @@
 package com.anihpatrickugo.bankpick.ui.screens.authentication.login
 
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.anihpatrickugo.bankpick.R
 
 import com.anihpatrickugo.bankpick.ui.components.common.CommonUI
-import com.anihpatrickugo.bankpick.ui.components.common.UIPasswordTextField
-import com.anihpatrickugo.bankpick.ui.components.common.UITextField
+import com.anihpatrickugo.bankpick.ui.navigation.BottomNavItem
+import com.anihpatrickugo.bankpick.ui.navigation.NavRoutes
+import com.anihpatrickugo.bankpick.ui.theme.Grey80
 
 
 @Composable
@@ -32,10 +37,10 @@ fun LoginScreen(navController: NavController) {
 
         ) {
           CommonUI.Header(onClickBack = { navController.navigateUp()})
-            Spacer(modifier = Modifier.height(20.dp))
+
             Text(
                 text = "Sign In",
-                fontWeight = FontWeight.ExtraBold,
+                fontWeight = FontWeight.SemiBold,
                 fontSize = 32.sp
                 )
             Spacer(modifier = Modifier.height(20.dp))
@@ -43,6 +48,7 @@ fun LoginScreen(navController: NavController) {
             // Text inputs
             Column(
                 modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 // Email address
 
@@ -67,7 +73,35 @@ fun LoginScreen(navController: NavController) {
                 
                 Spacer(modifier = Modifier.height(16.dp))
                 
-                CommonUI.Button(text = "Sign In", onClick = { /*TODO*/ })
+                CommonUI.Button(text = "Sign In", onClick = {
+                    navController.navigate(NavRoutes.Main.route) {
+                        popUpTo(NavRoutes.Login.route) { inclusive = true }
+                    }
+                })
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text(
+                    text = buildAnnotatedString {
+                        // This part of the text will have the default style
+                        append("I'm a new user ")
+
+                        // This part of the text will be highlighted in PrimaryColor
+                        withStyle(style = SpanStyle(
+                            color = MaterialTheme.colorScheme.primary, // Use your custom primary color
+                        )
+                        ) {
+                            append("Sign Up")
+                        }
+                    },
+                    color = Grey80,
+                    textAlign = TextAlign.Center,
+                    fontSize = 14.sp,
+                    modifier = Modifier.clickable {
+                        // Navigate to the signup screen when the text is clicked
+                        navController.navigate(NavRoutes.Signup.route)
+                    }
+                )
             }
         }
     }
