@@ -1,29 +1,28 @@
-package com.anihpatrickugo.bankpick.ui.navigation.bottomtabs
+package com.anihpatrickugo.bankpick.ui.navigation.main
 
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.anihpatrickugo.bankpick.ui.navigation.BottomNavItem
+import com.anihpatrickugo.bankpick.ui.navigation.BottomTabRoutes
 
 @Composable
-fun BottomBar(navController: NavController) {
+fun BottomBar(bottomNavController: NavController) {
     val items = listOf(
-        BottomNavItem.Home,
-        BottomNavItem.MyCards,
-        BottomNavItem.Statistics,
-        BottomNavItem.Settings
+        BottomTabRoutes.Home,
+        BottomTabRoutes.MyCards,
+        BottomTabRoutes.Statistics,
+        BottomTabRoutes.Settings
     )
 
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.background,
         tonalElevation = 8.dp
     ) {
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val navBackStackEntry by bottomNavController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
 
         items.forEach { item ->
@@ -32,8 +31,8 @@ fun BottomBar(navController: NavController) {
                 selected = selected,
                 onClick = {
                     if (currentRoute != item.route) {
-                        navController.navigate(item.route) {
-                            popUpTo(navController.graph.startDestinationId)
+                        bottomNavController.navigate(item.route) {
+                            popUpTo(bottomNavController.graph.startDestinationId)
                             launchSingleTop = true
                         }
                     }

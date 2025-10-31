@@ -1,24 +1,25 @@
 package com.anihpatrickugo.bankpick.ui.screens.main
 
 import android.annotation.SuppressLint
-import com.anihpatrickugo.bankpick.ui.navigation.bottomtabs.BottomBar
-import com.anihpatrickugo.bankpick.ui.navigation.bottomtabs.BottomNavGraph
-
-import androidx.compose.foundation.layout.padding
+import com.anihpatrickugo.bankpick.ui.navigation.main.BottomBar
+import com.anihpatrickugo.bankpick.ui.navigation.main.MainNavGraph
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun BottomTabScreen() {
-    val navController = rememberNavController()
+fun BottomTabScreen(navController: NavController) {
+    val bottomNavController = rememberNavController()
 
     Scaffold(
-        bottomBar = { BottomBar(navController = navController) }
+        bottomBar = { BottomBar(bottomNavController = bottomNavController) }
     ) { innerPadding ->
-        BottomNavGraph(navController = navController, )
+        MainNavGraph(
+            navController = navController,
+            bottomNavController = bottomNavController
+            )
     }
 }

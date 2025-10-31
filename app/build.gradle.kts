@@ -75,6 +75,7 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:1.7.0")
     implementation("androidx.navigation:navigation-compose:2.8.3") // navigation
     implementation("io.coil-kt:coil-compose:2.6.0")  // for network images
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0") // for charts
 
 
 

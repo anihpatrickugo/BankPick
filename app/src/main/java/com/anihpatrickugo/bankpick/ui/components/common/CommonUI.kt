@@ -36,13 +36,34 @@ object CommonUI {
     @Composable
     fun Header (
           onClickBack: ()-> Unit,
-          title: String = ""
+          title: String = "",
+          rightIcon: (@Composable (() -> Unit))? = null,
     ){
         UIHeader(
             onClickBack = onClickBack,
-            title = title
+            title = title,
+            rightIcon = rightIcon
         )
     }
+
+    @Composable
+    fun Link(
+        linkTitle : String,
+        linkLabel : String ="",
+        onClick : () -> Unit,
+        leftIcon: (@Composable (() -> Unit))? = null,
+        rightIcon: (@Composable (() -> Unit))? = null,
+    ){
+        UILink(
+            linkTitle = linkTitle,
+            linkLabel = linkLabel,
+            onClick = onClick,
+            rightIcon = rightIcon,
+            leftIcon = leftIcon
+        )
+
+    }
+
 
     @Composable
     fun TextField(

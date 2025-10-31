@@ -7,10 +7,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.anihpatrickugo.bankpick.ui.screens.authentication.splash.SplashScreen
 import com.anihpatrickugo.bankpick.ui.screens.authentication.onboarding.OnboardingScreen
-import androidx.compose.material3.Text
 import com.anihpatrickugo.bankpick.ui.screens.authentication.login.LoginScreen
 import com.anihpatrickugo.bankpick.ui.screens.authentication.signup.SignupScreen
 import com.anihpatrickugo.bankpick.ui.screens.main.BottomTabScreen
+import com.anihpatrickugo.bankpick.ui.screens.main.profile.ProfileScreen
 
 
 @Composable
@@ -51,8 +51,14 @@ fun NavigationGraph() {
 
         //bottom tabs
         composable(NavRoutes.Main.route) {
-            BottomTabScreen()
+            BottomTabScreen(navController = navController)
         }
+
+        // profile
+        composable(NavRoutes.Profile.route) {
+            ProfileScreen()
+        }
+
 
     }
 }

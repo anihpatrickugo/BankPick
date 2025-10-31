@@ -24,6 +24,7 @@ private val DarkColorScheme = darkColorScheme(
     surface = DarkBlue40,
     onPrimary = White,
     onSurfaceVariant = Grey60,
+    inverseOnSurface = DarkBlue60
 
 
 )
@@ -36,6 +37,7 @@ private val LightColorScheme = lightColorScheme(
     surface = White,
     onPrimary = White40,
     onSurfaceVariant = Grey60,
+    inverseOnSurface = White40,
 
 
     /* Other default colors to override

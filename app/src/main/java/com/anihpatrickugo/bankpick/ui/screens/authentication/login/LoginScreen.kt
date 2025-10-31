@@ -19,7 +19,6 @@ import androidx.navigation.NavController
 import com.anihpatrickugo.bankpick.R
 
 import com.anihpatrickugo.bankpick.ui.components.common.CommonUI
-import com.anihpatrickugo.bankpick.ui.navigation.BottomNavItem
 import com.anihpatrickugo.bankpick.ui.navigation.NavRoutes
 import com.anihpatrickugo.bankpick.ui.theme.Grey80
 
