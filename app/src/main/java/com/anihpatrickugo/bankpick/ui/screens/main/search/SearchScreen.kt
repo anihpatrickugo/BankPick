@@ -1,87 +1,87 @@
-package com.anihpatrickugo.bankpick.ui.screens.main.statistics
+package com.anihpatrickugo.bankpick.ui.screens.main.search
 
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.NotificationsNone
+import androidx.compose.material.icons.outlined.Close
+import androidx.compose.material.icons.outlined.History
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.anihpatrickugo.bankpick.R
 import com.anihpatrickugo.bankpick.ui.components.common.CommonUI
-import com.anihpatrickugo.bankpick.ui.components.main.LineChartView
-import com.anihpatrickugo.bankpick.ui.navigation.NavRoutes
 import com.anihpatrickugo.bankpick.ui.theme.Blue
 
-
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun StatisticsScreen(navController: NavController) {
+fun SearchScreen() {
+
+    var search by remember { mutableStateOf("") }
+
     CommonUI.Containner {
         Box(modifier =  Modifier.fillMaxSize()){
-
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 item{
-                    CommonUI.Header(title = "Statistics", onClickBack = { /*TODO*/ }, rightIcon = {
+                    //header
+                    CommonUI.Header(title = "Search", onClickBack = { /*TODO*/ }, rightIcon = {
                         IconButton(
                             modifier = Modifier
                                 .align(Alignment.CenterEnd)
                                 .size(42.dp)
                                 .background(MaterialTheme.colorScheme.background, CircleShape),
-                            onClick = {}
+                            onClick = {
+//                                navController.navigate(NavRoutes.EditProfile.route)
+                            }
                         ) {
                             Icon(
-                                imageVector = Icons.Filled.NotificationsNone,
-                                contentDescription = "notification icon",
+                                imageVector = Icons.Outlined.Close,
+                                contentDescription = "close icon",
                                 modifier = Modifier.size(22.dp),
                                 tint = MaterialTheme.colorScheme.onSurface
                             )
                         }
                     })
+
                 }
-                item{
-
-                    val xValues = listOf(0f, 1f, 2f, 3f, 4f, 5f)
-                    val yValues = listOf(2f, 4f, 1f, 5f, 3f, 6f)
-
-                    LineChartView(
-                        xData = xValues,
-                        yData = yValues,
-                        )
-                }
-
 
                 item{
 
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ){
-                        Text(text = "Transaction", fontSize = 18.sp)
-                        Text(text = "see all", fontSize=14.sp, color = Blue, modifier = Modifier.clickable {
-                            navController.navigate(NavRoutes.TrasactionHistory.route)
-                        })
-                    }
+                    CommonUI.TextField(
+                        value = search,
+                        onValueChange = { search = it },
+                        label = "Search",
+                        innerLabel = true,
+                        singleLine = true,
+                        isSearchField = true,
+                        leadingIcon = R.drawable.ic_search,
+                        trailingIcon = R.drawable.ic_close
+                    )
 
                 }
-
 
 
                 items(10){item ->
@@ -142,13 +142,5 @@ fun StatisticsScreen(navController: NavController) {
         }
 
     }
-    //blur shadow
-    Image(
-        painter = painterResource(id = R.drawable.background_blur),
-        contentDescription = "Blur",
-        modifier = Modifier.offset(x=180.dp, y=115.dp)
-    )
+
 }
-
-
-

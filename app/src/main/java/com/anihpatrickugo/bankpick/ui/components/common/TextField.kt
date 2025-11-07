@@ -16,6 +16,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.anihpatrickugo.bankpick.ui.theme.Grey100
+import com.anihpatrickugo.bankpick.ui.theme.Grey80
 
 @Composable
 fun UITextField(
@@ -23,6 +25,8 @@ fun UITextField(
     value: String,
     onValueChange: (String) -> Unit,
     placeholder: String = "",
+    innerLabel: Boolean = false,
+    isSearchField: Boolean = false,
     singleLine: Boolean = true,
     leadingIcon: Int? = null,
     trailingIcon: Int? = null,
@@ -30,18 +34,24 @@ fun UITextField(
     keyboardOptions: KeyboardOptions? = KeyboardOptions(keyboardType = KeyboardType.Text),
     modifier: Modifier = Modifier
 ) {
+
+    val unfocusedContainerColor = if (isSearchField) MaterialTheme.colorScheme.background else Color.Transparent
+    val unfocusedIndicatorColor = if (isSearchField) Color.Transparent else Grey80.copy(alpha = 0.3f)
+
     Column(
         modifier = modifier.fillMaxWidth()
     ) {
         // Label above the field
-        Text(
-            text = label,
-            style = MaterialTheme.typography.labelMedium.copy(
-                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
-                fontSize = 14.sp
-            ),
-            modifier = Modifier.padding(bottom = 0.dp)
-        )
+        if(!innerLabel){
+            Text(
+                text = label,
+                style = MaterialTheme.typography.labelMedium.copy(
+                    color = Grey100,
+                    fontSize = 14.sp
+                ),
+                modifier = Modifier.padding(bottom = 0.dp)
+            )
+        }
 
         // Plain TextField (no borders)
         TextField(
@@ -50,12 +60,24 @@ fun UITextField(
             textStyle = TextStyle(fontSize = 14.sp),
             colors = TextFieldDefaults.colors(
                 focusedIndicatorColor = MaterialTheme.colorScheme.primary,   // bottom line color (active)
-                unfocusedIndicatorColor = MaterialTheme.colorScheme.outline, // bottom line color (inactive)
+                unfocusedIndicatorColor = unfocusedIndicatorColor, // bottom line color (inactive)
                 disabledIndicatorColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f),
                 focusedContainerColor = MaterialTheme.colorScheme.background,
-                unfocusedContainerColor = Color.Transparent,
+                unfocusedContainerColor = unfocusedContainerColor,
 
             ),
+            label = {
+                    if (innerLabel){
+                        Text(
+                            text = label,
+                            style = MaterialTheme.typography.labelMedium.copy(
+                                color = Grey100,
+                                fontSize = 13.sp
+                            ),
+                            modifier = Modifier.padding(bottom = 0.dp)
+                        )
+                    }
+            },
             singleLine = singleLine,
             modifier = Modifier.fillMaxWidth(),
             placeholder = { Text(text = placeholder, fontSize = 14.sp) },
@@ -64,7 +86,7 @@ fun UITextField(
                     Icon(
                         painter = painterResource(id = it),
                         contentDescription = "Leading Icon",
-                        tint = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
+                        tint = Grey100
                     )
                 }
             },
@@ -74,13 +96,13 @@ fun UITextField(
                         Icon(
                             painter = painterResource(id = it),
                             contentDescription = "Trailing Icon",
-                            tint = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
+                            tint =  Grey100
                         )
                     }
                 }
             },
             keyboardOptions = keyboardOptions!!
         )
-        Spacer(modifier = Modifier.height(18.dp))
+        Spacer(modifier=Modifier.height(12.dp))
     }
 }

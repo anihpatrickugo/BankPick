@@ -23,17 +23,19 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.anihpatrickugo.bankpick.R
 import com.anihpatrickugo.bankpick.ui.components.common.CommonUI
+import com.anihpatrickugo.bankpick.ui.navigation.NavRoutes
 import com.anihpatrickugo.bankpick.ui.theme.Grey80
 import com.anihpatrickugo.bankpick.ui.theme.Red
 import com.anihpatrickugo.bankpick.ui.theme.White
 
 
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(navController: NavController) {
 
 
     CommonUI.Containner {
@@ -50,8 +52,10 @@ fun ProfileScreen() {
                             modifier = Modifier
                                 .align(Alignment.CenterEnd)
                                 .size(42.dp)
-                                .background(MaterialTheme.colorScheme.surfaceVariant, CircleShape),
-                            onClick = {}
+                                .background(MaterialTheme.colorScheme.background, CircleShape),
+                            onClick = {
+                                navController.navigate(NavRoutes.EditProfile.route)
+                            }
                         ) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_person_edit),

@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import java.util.Calendar
 
 
 object CommonUI {
@@ -22,6 +23,7 @@ object CommonUI {
     }
 
     // Example Containner
+
     @Composable
     fun Containner(
         modifier: Modifier = Modifier,
@@ -33,6 +35,14 @@ object CommonUI {
         UIContainner (modifier, color, contentColor, padding, content)
     }
 
+    @Composable
+    fun DatePicker(
+        label: String,
+        selectedDate: Calendar,
+        onDateSelected: (Calendar) -> Unit
+    ) {
+        UIDatePicker (label, selectedDate, onDateSelected)
+    }
     @Composable
     fun Header (
           onClickBack: ()-> Unit,
@@ -71,13 +81,15 @@ object CommonUI {
         value: String,
         onValueChange: (String)-> Unit,
         placeholder: String = "",
+        innerLabel: Boolean = false,
+        isSearchField: Boolean = false,
         singleLine: Boolean = true,
         leadingIcon: Int? = null,
         trailingIcon: Int? = null,
         onTrailingIconClick: (() -> Unit)? = null,
         keyboardOptions: KeyboardOptions? = KeyboardOptions(keyboardType = KeyboardType.Text)
     ){
-        UITextField(label, value, onValueChange, placeholder, singleLine,
+        UITextField(label, value, onValueChange, placeholder, innerLabel, isSearchField, singleLine,
             leadingIcon, trailingIcon, onTrailingIconClick, keyboardOptions)
     }
 

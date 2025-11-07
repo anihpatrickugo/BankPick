@@ -17,6 +17,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.anihpatrickugo.bankpick.ui.theme.Grey100
 
 @Composable
 fun UIPasswordTextField(
@@ -37,7 +38,7 @@ fun UIPasswordTextField(
         Text(
             text = label,
             style = MaterialTheme.typography.labelMedium.copy(
-                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
+                color = Grey100,
                 fontSize = 14.sp
             ),
             modifier = Modifier.padding(bottom = 0.dp)
@@ -50,7 +51,7 @@ fun UIPasswordTextField(
             textStyle = TextStyle(fontSize = 14.sp),
             colors = TextFieldDefaults.colors(
                 focusedIndicatorColor = MaterialTheme.colorScheme.primary,   // bottom line color (active)
-                unfocusedIndicatorColor = MaterialTheme.colorScheme.outline, // bottom line color (inactive)
+                unfocusedIndicatorColor = Grey100, // bottom line color (inactive)
                 disabledIndicatorColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f),
                 focusedContainerColor = MaterialTheme.colorScheme.background,
                 unfocusedContainerColor = Color.Transparent,
@@ -65,7 +66,7 @@ fun UIPasswordTextField(
                     Icon(
                         painter = painterResource(id = it),
                         contentDescription = "Leading Icon",
-                        tint = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
+                        tint = Grey100
                     )
                 }
             },
@@ -79,7 +80,7 @@ fun UIPasswordTextField(
                     Icon(
                         painter = painterResource(id = eyeIcon),
                         contentDescription = contentDesc,
-                        tint = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
+                        tint = Grey100
                     )
                 }
             },

@@ -23,18 +23,20 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.anihpatrickugo.bankpick.R
 import com.anihpatrickugo.bankpick.ui.components.common.CommonUI
 import com.anihpatrickugo.bankpick.ui.components.main.DebitCard
+import com.anihpatrickugo.bankpick.ui.navigation.NavRoutes
 import com.anihpatrickugo.bankpick.ui.theme.Blue
 import com.anihpatrickugo.bankpick.ui.theme.Grey80
 
 
-@OptIn(ExperimentalFoundationApi::class)
+
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     CommonUI.Containner {
         Box(modifier =  Modifier.fillMaxSize()){
             LazyColumn(
@@ -82,12 +84,14 @@ fun HomeScreen() {
                         IconButton(
                             modifier = Modifier
                                 .size(42.dp)
-                                .background(MaterialTheme.colorScheme.surfaceVariant, CircleShape),
-                            onClick = {}
+                                .background(MaterialTheme.colorScheme.background, CircleShape),
+                            onClick = {
+                                navController.navigate(NavRoutes.Search.route)
+                            }
                         ) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_search), // Use your back icon
-                                contentDescription = "Back",
+                                contentDescription = "search",
                                 tint = MaterialTheme.colorScheme.onSurface
                             )
                         }
@@ -116,20 +120,22 @@ fun HomeScreen() {
                                 modifier = Modifier
                                     .size(54.dp)
                                     .background(
-                                        MaterialTheme.colorScheme.surfaceVariant,
+                                        MaterialTheme.colorScheme.background,
                                         CircleShape
                                     ),
-                                onClick = {}
+                                onClick = {
+                                    navController.navigate(NavRoutes.SendMoney.route)
+                                }
 
                             ) {
                                 Icon(
                                     imageVector = Icons.Outlined.ArrowUpward, // Use your back icon
-                                    contentDescription = "sent",
+                                    contentDescription = "send",
                                     tint = MaterialTheme.colorScheme.onSurface
                                 )
                             }
                             Text(
-                                text = "Sent",
+                                text = "Send",
                                 fontSize = 11.sp,
 
                             )
@@ -144,10 +150,12 @@ fun HomeScreen() {
                                 modifier = Modifier
                                     .size(54.dp)
                                     .background(
-                                        MaterialTheme.colorScheme.surfaceVariant,
+                                        MaterialTheme.colorScheme.background,
                                         CircleShape
                                     ),
-                                onClick = {}
+                                onClick = {
+                                    navController.navigate(NavRoutes.ReceiveMoney.route)
+                                }
                             ) {
                                 Icon(
                                     imageVector = Icons.Outlined.ArrowDownward, // Use your back icon
@@ -170,7 +178,7 @@ fun HomeScreen() {
                                 modifier = Modifier
                                     .size(54.dp)
                                     .background(
-                                        MaterialTheme.colorScheme.surfaceVariant,
+                                        MaterialTheme.colorScheme.background,
                                         CircleShape
                                     ),
                                 onClick = {}
@@ -196,7 +204,7 @@ fun HomeScreen() {
                                 modifier = Modifier
                                     .size(54.dp)
                                     .background(
-                                        MaterialTheme.colorScheme.surfaceVariant,
+                                        MaterialTheme.colorScheme.background,
                                         CircleShape
                                     ),
                                 onClick = {}
@@ -223,7 +231,9 @@ fun HomeScreen() {
                         horizontalArrangement = Arrangement.SpaceBetween
                     ){
                         Text(text = "Transaction", fontSize = 18.sp)
-                        Text(text = "see all", fontSize=14.sp, color = Blue)
+                        Text(text = "see all", fontSize=14.sp, color = Blue, modifier = Modifier.clickable {
+                            navController.navigate(NavRoutes.TrasactionHistory.route)
+                        })
                     }
 
                 }
@@ -239,7 +249,7 @@ fun HomeScreen() {
                             modifier = Modifier
                                 .size(42.dp)
                                 .background(
-                                    MaterialTheme.colorScheme.surfaceVariant,
+                                    MaterialTheme.colorScheme.background,
                                     CircleShape
                                 )
                                 .clickable { },

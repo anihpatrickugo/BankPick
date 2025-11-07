@@ -38,7 +38,7 @@ fun UIHeader(
                 modifier = Modifier
                     .align(Alignment.CenterStart)
                     .size(42.dp)
-                    .background(MaterialTheme.colorScheme.surfaceVariant, CircleShape),
+                    .background(MaterialTheme.colorScheme.background, CircleShape),
                 onClick = {onClickBack()}
             ) {
                 Icon(

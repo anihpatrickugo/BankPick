@@ -6,22 +6,17 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.runtime.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.NotificationsNone
-import androidx.compose.material.icons.outlined.ArrowDownward
-import androidx.compose.material.icons.outlined.ArrowUpward
-import androidx.compose.material.icons.outlined.Wifi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -31,9 +26,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.anihpatrickugo.bankpick.R
 import com.anihpatrickugo.bankpick.ui.components.common.CommonUI
 import com.anihpatrickugo.bankpick.ui.components.main.DebitCard
+import com.anihpatrickugo.bankpick.ui.navigation.NavRoutes
 import com.anihpatrickugo.bankpick.ui.theme.Blue
 import kotlin.math.max
 import kotlin.math.min
@@ -68,7 +65,7 @@ fun CurvedProgressWithRange(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(12.dp)
+                    .height(7.dp)
                     .clip(RoundedCornerShape(50))
                     .background(MaterialTheme.colorScheme.surfaceVariant)
             )
@@ -130,11 +127,8 @@ fun CurvedProgressWithRange(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MyCardsScreen() {
-    val animatedProgress by animateFloatAsState(
-        targetValue = 0.8f,
-        label = "animatedProgress"
-    )
+fun CardScreen(navController: NavController) {
+
 
     CommonUI.Containner {
         Box(modifier =  Modifier.fillMaxSize()){
@@ -150,8 +144,10 @@ fun MyCardsScreen() {
                             modifier = Modifier
                                 .align(Alignment.CenterEnd)
                                 .size(42.dp)
-                                .background(MaterialTheme.colorScheme.surfaceVariant, CircleShape),
-                            onClick = {}
+                                .background(MaterialTheme.colorScheme.background, CircleShape),
+                            onClick = {
+                                navController.navigate(NavRoutes.AllCards.route)
+                            }
                         ) {
                             Icon(
                                 imageVector = Icons.Filled.Add,
@@ -175,7 +171,9 @@ fun MyCardsScreen() {
                         horizontalArrangement = Arrangement.SpaceBetween
                     ){
                         Text(text = "Transaction", fontSize = 18.sp)
-                        Text(text = "see all", fontSize=14.sp, color = Blue)
+                        Text(text = "see all", fontSize=14.sp, color = Blue, modifier = Modifier.clickable {
+                            navController.navigate(NavRoutes.TrasactionHistory.route)
+                        })
                     }
 
                 }
@@ -189,7 +187,7 @@ fun MyCardsScreen() {
                             modifier = Modifier
                                 .size(42.dp)
                                 .background(
-                                    MaterialTheme.colorScheme.surfaceVariant,
+                                    MaterialTheme.colorScheme.background,
                                     CircleShape
                                 )
                                 .clickable { },

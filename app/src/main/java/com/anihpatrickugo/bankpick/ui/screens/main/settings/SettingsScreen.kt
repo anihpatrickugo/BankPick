@@ -61,7 +61,7 @@ fun SettingsScreen(navController: NavController ) {
                         modifier = Modifier
                             .align(Alignment.CenterEnd)
                             .size(42.dp)
-                            .background(MaterialTheme.colorScheme.surfaceVariant, CircleShape),
+                            .background(MaterialTheme.colorScheme.background, CircleShape),
                         onClick = {}
                     ) {
                         Icon(
@@ -121,12 +121,12 @@ fun SettingsScreen(navController: NavController ) {
 
                         CommonUI.Link(
                             linkTitle = "Change Password",
-                            onClick = {}
+                            onClick = {    navController.navigate(NavRoutes.ChangePassword.route)}
                         )
 
                         CommonUI.Link(
                             linkTitle = "Privacy Policy",
-                            onClick = {}
+                            onClick = {    navController.navigate(NavRoutes.PrivacyPolicy.route)}
                         )
                     }
                 }

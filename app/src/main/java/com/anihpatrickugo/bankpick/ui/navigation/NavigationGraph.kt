@@ -10,7 +10,16 @@ import com.anihpatrickugo.bankpick.ui.screens.authentication.onboarding.Onboardi
 import com.anihpatrickugo.bankpick.ui.screens.authentication.login.LoginScreen
 import com.anihpatrickugo.bankpick.ui.screens.authentication.signup.SignupScreen
 import com.anihpatrickugo.bankpick.ui.screens.main.BottomTabScreen
+import com.anihpatrickugo.bankpick.ui.screens.main.cards.AllCardsScreen
+import com.anihpatrickugo.bankpick.ui.screens.main.cards.NewCardScreen
+import com.anihpatrickugo.bankpick.ui.screens.main.password.ChangePasswordScreen
+import com.anihpatrickugo.bankpick.ui.screens.main.privacy.PrivacyPolicyScreen
+import com.anihpatrickugo.bankpick.ui.screens.main.profile.EditProfileScreen
 import com.anihpatrickugo.bankpick.ui.screens.main.profile.ProfileScreen
+import com.anihpatrickugo.bankpick.ui.screens.main.receive.ReceiveMoneyScreen
+import com.anihpatrickugo.bankpick.ui.screens.main.search.SearchScreen
+import com.anihpatrickugo.bankpick.ui.screens.main.send.SendMoneyScreen
+import com.anihpatrickugo.bankpick.ui.screens.main.transaction.TransactionHistoryScreen
 
 
 @Composable
@@ -56,7 +65,52 @@ fun NavigationGraph() {
 
         // profile
         composable(NavRoutes.Profile.route) {
-            ProfileScreen()
+            ProfileScreen(navController = navController)
+        }
+
+        // edit-profile
+        composable(NavRoutes.EditProfile.route) {
+            EditProfileScreen()
+        }
+
+        //all cards
+        composable(NavRoutes.AllCards.route) {
+            AllCardsScreen(navController = navController)
+        }
+
+        //new card
+        composable(NavRoutes.NewCard.route) {
+            NewCardScreen(navController = navController)
+        }
+
+        //transaction history
+        composable(NavRoutes.TrasactionHistory.route) {
+          TransactionHistoryScreen()
+        }
+
+        //search
+        composable(NavRoutes.Search.route) {
+            SearchScreen()
+        }
+
+        //send money
+        composable(NavRoutes.SendMoney.route) {
+            SendMoneyScreen(navController = navController)
+        }
+
+        // send money
+        composable(NavRoutes.ReceiveMoney.route) {
+                ReceiveMoneyScreen(navController = navController)
+        }
+
+        // change password
+        composable(NavRoutes.ChangePassword.route) {
+            ChangePasswordScreen(navController = navController)
+        }
+
+        // privacy policy
+        composable(NavRoutes.PrivacyPolicy.route) {
+            PrivacyPolicyScreen(navController = navController)
         }
 
 
