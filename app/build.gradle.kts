@@ -71,13 +71,15 @@ dependencies {
 
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.34.0") // ui controller
     implementation("androidx.datastore:datastore-preferences:1.1.1") // DataStore (Preferences)
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.32.0") // system contrloller
     implementation("androidx.compose.foundation:foundation:1.7.0")
     implementation("androidx.navigation:navigation-compose:2.8.3") // navigation
     implementation("io.coil-kt:coil-compose:2.6.0")  // for network images
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0") // for charts
 
-
+    // for compose widgets
+    implementation ("androidx.glance:glance:1.1.1")
+    implementation ("androidx.glance:glance-appwidget:1.1.1")
+    implementation ("androidx.glance:glance-material3:1.1.1")
 
 
     // Testing Libraries
